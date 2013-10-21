@@ -90,6 +90,18 @@ exactly if the new data and the old data are substantially different,
 but hopefully they are exact in content, and differ only in format
 (CSV vs JSON).
 
+**Variables 
+Src in dataset from CSV is equal to net in dataset from JSON.
+Eqid in dataset from CSV is equal to code in dataset from JSON.
+time in dataset from CSV is equal to time in dataset from JSON.
+Lat in dataset from CSV is equal to longitude in dataset from JSON.
+Lon in dataset from CSV is equal to longitude in dataset from JSON.
+Depth in dataset from CSV is equal to depth in dataset from JSON.
+nst in dataset from CSV is equal to nst in dataset from JSON.
+region in dataset from CSV is equal to place in dataset from JSON.
+
+
+
 2) Visualization
 
 The definition of `plot_ak()` has a *very bad code smell*! What if we
