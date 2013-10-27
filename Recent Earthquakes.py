@@ -49,19 +49,26 @@ alaska[0:10]
 # <codecell>
 
 from mpl_toolkits.basemap import Basemap
+from matplotlib.cm import get_cmap
 
-def plot_quakes(quakes):
+def plot_quakes(quakes, cmap, size):
     m = Basemap(llcrnrlon=-180,llcrnrlat=50.,
                 urcrnrlon=-120.,urcrnrlat=72,
                 resolution='l',area_thresh=1000.,projection='merc',
                 lat_0=62.9540,lon_0=-149.2697)
+    x, y = m(quakes.Lon, quakes.Lat)
+    colors = arange(len(x))
+
+    m.scatter(x, y, s=size, marker='o', c=quakes.Depth,
+              cmap=cmap, alpha=0.7, zorder=10)
+
     m.drawcoastlines()
     m.drawcountries()
     m.fillcontinents(color='coral',lake_color='blue')
     m.drawmapboundary(fill_color='aqua')
-    x, y = m(quakes.Lon, quakes.Lat)
-    m.plot(x, y, 'k.')
+    colorbar()
     return m
 
-plot_quakes(alaska)
+mycmap = get_cmap('Reds')
+plot_quakes(alaska, mycmap, 100)
 
